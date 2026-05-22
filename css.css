@@ -1,0 +1,298 @@
+/* --- CSS Variables for Easy Theme Tweaks --- */
+:root {
+    --dark-bg: #0a192f;
+    --card-bg: #112240;
+    --light-blue: #00b4d8;
+    --accent-blue: #90e0ef;
+    --white: #ffffff;
+    --text-muted: #a8b2d1;
+    --transition: all 0.3s ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+/* --- Header & Nav --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: rgba(10, 25, 47, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 180, 216, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--light-blue);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: var(--light-blue);
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(10,25,47,0.8), var(--dark-bg)), 
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.hero-content p {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid var(--light-blue);
+    color: var(--light-blue);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background-color: var(--light-blue);
+    color: var(--dark-bg);
+    box-shadow: 0 0 15px rgba(0, 180, 216, 0.4);
+}
+
+/* --- Gallery & Collage Grid --- */
+.gallery-container {
+    padding: 60px 8%;
+}
+
+.gallery-container h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--text-muted);
+    color: var(--text-muted);
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: var(--light-blue);
+    border-color: var(--light-blue);
+    color: var(--dark-bg);
+}
+
+/* CSS Grid Collage Setup */
+.collage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 250px;
+    grid-gap: 20px;
+    grid-auto-flow: dense; /* Fills holes automatically */
+}
+
+.photo-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* Modifiers for Dynamic Grid Sizing */
+.photo-card.tall {
+    grid-row: span 2;
+}
+
+.photo-card.wide {
+    grid-column: span 2;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Interactive Hover Overlay */
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.2));
+    opacity: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 25px;
+    transition: var(--transition);
+}
+
+.photo-card:hover class="photo-overlay",
+.photo-card:hover .photo-overlay {
+    opacity: 1;
+}
+
+.photo-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    color: var(--white);
+}
+
+.photo-info p {
+    color: var(--light-blue);
+    font-size: 0.9rem;
+}
+
+/* --- Lightbox Modal --- */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 25, 47, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-img {
+    max-width: 85%;
+    max-height: 75%;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.lightbox-caption {
+    margin-top: 20px;
+    color: var(--white);
+    text-align: center;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 3rem;
+    color: var(--white);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-lightbox:hover {
+    color: var(--light-blue);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    border-top: 1px solid rgba(0, 180, 216, 0.1);
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Breakpoints --- */
+@media (max-width: 900px) {
+    .photo-card.wide {
+        grid-column: span 1; /* Drop spans on medium screens */
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    nav ul li {
+        margin: 0 15px;
+    }
+    .collage-grid {
+        grid-template-columns: 1fr; /* Stack into single column on mobile */
+        grid-auto-rows: 250px;
+    }
+    .photo-card.tall {
+        grid-row: span 1;
+    }
+}

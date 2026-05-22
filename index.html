@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Portfolio</title>
+    <link rel="stylesheet" href="css.css">
+    <!-- Font Awesome for smooth UI icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-camera-retro"></i> Lens<span>Craft</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Capturing Moments In Time</h1>
+            <p>A visual journey through landscapes, cities, and cultures.</p>
+            <a href="#gallery" class="btn">Explore Gallery</a>
+        </div>
+    </section>
+
+    <!-- Gallery / Collage Section -->
+    <section id="gallery" class="gallery-container">
+        <h2>Visual Explorations</h2>
+        
+        <!-- Filter Buttons for High User-Friendliness -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="nature">Nature</button>
+            <button class="filter-btn" data-filter="urban">Urban</button>
+        </div>
+
+        <!-- The Collage Grid -->
+        <div class="collage-grid">
+            
+            <!-- Photo Card 1 -->
+            <div class="photo-card" data-category="nature">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Yosemite Valley">
+                <div class="photo-overlay">
+                    <div class="photo-info">
+                        <h3>Yosemite Valley</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> California, USA</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Card 2 -->
+            <div class="photo-card tall" data-category="urban">
+                <img src="https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=800&q=80" alt="Shibuya Crossing">
+                <div class="photo-overlay">
+                    <div class="photo-info">
+                        <h3>Shibuya Crossing</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Tokyo, Japan</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Card 3 -->
+            <div class="photo-card" data-category="urban">
+                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80" alt="Tower Bridge">
+                <div class="photo-overlay">
+                    <div class="photo-info">
+                        <h3>Tower Bridge</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> London, UK</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Card 4 -->
+            <div class="photo-card wide" data-category="nature">
+                <img src="https://images.unsplash.com/photo-1472214222541-d510753a8707?auto=format&fit=crop&w=1200&q=80" alt="Fukushima Countryside">
+                <div class="photo-overlay">
+                    <div class="photo-info">
+                        <h3>Rural Landscapes</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Fukushima, Japan</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Card 5 -->
+            <div class="photo-card" data-category="nature">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Mirissa Beach">
+                <div class="photo-overlay">
+                    <div class="photo-info">
+                        <h3>Mirissa Beach</h3>
+                        <p><i class="fa-solid fa-location-dot"></i> Matara, Sri Lanka</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Portfolio. Hosted beautifully on GitHub Pages.</p>
+    </footer>
+
+    <script src="js.js"></script>
+</body>
+</html>
